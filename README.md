@@ -23,7 +23,7 @@
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| product_name        | text       | null: false                    |
+| product_name        | string     | null: false                    |
 | explanation         | text       | null: false                    |
 | category_id         | integer    | null: false                    |
 | condition_id        | integer    | null: false                    |
@@ -66,7 +66,7 @@
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :purchase
 
 ## comments
 | Column       | Type       | Options                        |
