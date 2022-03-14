@@ -29,15 +29,15 @@
 | condition_id        | integer    | null: false                    |
 | shipping_charges_id | integer    | null: false                    |
 | prefecture_id       | integer    | null: false                    |
-| days_id             | integer    | null: false                    |
+| send_id             | integer    | null: false                    |
 | price               | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
 ### Association
 
 - has_many :comments
-- belongs_to :purchase
 - belongs_to :user
+- has_one :purchase
 
 ## purchases テーブル
 
