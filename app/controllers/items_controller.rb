@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
-  
 
   def index
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -18,6 +18,9 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def item_params
@@ -25,5 +28,4 @@ class ItemsController < ApplicationController
       :product_name, :explanation, :category_id, :condition_id, :shipping_charge_id, :prefecture_id, :delivery_id, :price, :image
     ).merge(user_id: current_user.id)
   end
-
 end
