@@ -8,6 +8,10 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+  # has_many :comments
+  belongs_to :user
+  has_one :purchase
+
   with_options presence: true do
     validates :image
     validates :product_name
