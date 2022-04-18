@@ -35,7 +35,7 @@ RSpec.describe PurchaseShipping, type: :model do
         expect(@purchase_shipping.errors.full_messages).to include('Postal code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'prefectureを選択していないと保存できない' do
-        @purchase_shipping.prefecture = 1
+        @purchase_shipping.prefecture_id = 1
         @purchase_shipping.valid?
         expect(@purchase_shipping.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -62,8 +62,15 @@ RSpec.describe PurchaseShipping, type: :model do
       it 'phone_numberが10桁未満では保存できない' do
         @purchase_shipping.phone_number = '080000000'
         @purchase_shipping.valid?
-        expect(@purchase_shipping.errors.full_messages).to include('Phone number is too short')
+        expect(@purchase_shipping.errors.full_messages).to include('Phone number is too short (minimum is 10 characters)')
       end
+
+      it 'phone_numberが12桁以上では保存できない' do
+        @purchase_shipping.phone_number = '080000000000'
+        @purchase_shipping.valid?
+        expect(@purchase_shipping.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+      end
+
       it 'userが紐付いていないと保存できない' do
         @purchase_shipping.user_id = nil
         @purchase_shipping.valid?
