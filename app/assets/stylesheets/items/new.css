@@ -227,3 +227,14 @@
 .inc {
   font-size: 13px;
 }
+
+.preview {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.preview-image {
+  height: 250px;
+  width: 250px;
+  object-fit: contain;
+}
