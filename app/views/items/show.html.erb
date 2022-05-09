@@ -86,7 +86,7 @@
 </div>
 
   <div class="comment-box">
-    <% if user_signed_in? %>
+    <% if user_signed_in? && @item.purchase.blank? %>
       <%= form_with(model: [@item, @comment], id: "comment-box") do |f| %>
         <%= f.text_area :content , class: "comment-text" %>
       <p class="comment-warn">
